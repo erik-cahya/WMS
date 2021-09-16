@@ -14,6 +14,7 @@ class Controller
         require_once '../app/models/' . $model . '.php';
 
         $model2 = '\\wms\\app\\models\\' . $model;
+
         return new $model2;
     }
 }

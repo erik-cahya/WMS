@@ -2,6 +2,7 @@
 
 namespace wms\app\models;
 
+use wms\app\core\Database;
 
 class Pegawai
 {
@@ -10,7 +11,7 @@ class Pegawai
     // Instansiasi controller database
     public function __construct()
     {
-        $this->database = new \wms\app\core\Database;
+        $this->database = new Database;
     }
 
     // Query semua data pegawai
@@ -41,11 +42,11 @@ class Pegawai
     // Add Data Pegawai
     public function addPegawai($data)
     {
-        $nik = $data['nik'];
-        $id_jabatan = $data['id_jabatan'];
-        $nama_pegawai = $data['nama_pegawai'];
-        $no_hp = $data['no_hp'];
-        $level = $data['level'];
+        $nik            = $data['nik'];
+        $id_jabatan     = $data['id_jabatan'];
+        $nama_pegawai   = $data['nama_pegawai'];
+        $no_hp          = $data['no_hp'];
+        $level          = $data['level'];
 
         $query = "INSERT INTO pegawai
         VALUES(
@@ -91,23 +92,23 @@ class Pegawai
     public function editPegawai($data)
     {
 
-        $nik = $data["nik"];
-        $id_jabatan = $data["id_jabatan"];
-        $nama_pegawai = $data["nama_pegawai"];
-        $tempat_lahir = $data["tempat_lahir"];
-        $tanggal_lahir = $data["tanggal_lahir"];
-        $jenis_kelamin = $data["jenis_kelamin"];
-        $no_hp = $data["no_hp"];
-        $email = $data["email"];
-        $alamat = $data["alamat"];
-        $lulusan = $data["lulusan"];
-        $skill = $data["skill"];
-        $fb_links = $data["fb_links"];
-        $ig_links = $data["ig_links"];
-        $linked_links = $data["linked_links"];
-        $gambarLama = $data["gambarLama"];
-        $gambar = $data["gambar"];
-        $level = $data["level"];
+        $nik            = $data["nik"];
+        $id_jabatan     = $data["id_jabatan"];
+        $nama_pegawai   = $data["nama_pegawai"];
+        $tempat_lahir   = $data["tempat_lahir"];
+        $tanggal_lahir  = $data["tanggal_lahir"];
+        $jenis_kelamin  = $data["jenis_kelamin"];
+        $no_hp          = $data["no_hp"];
+        $email          = $data["email"];
+        $alamat         = $data["alamat"];
+        $lulusan        = $data["lulusan"];
+        $skill          = $data["skill"];
+        $fb_links       = $data["fb_links"];
+        $ig_links       = $data["ig_links"];
+        $linked_links   = $data["linked_links"];
+        $gambarLama     = $data["gambarLama"];
+        $gambar         = $data["gambar"];
+        $level          = $data["level"];
 
 
         $query = "UPDATE pegawai SET 

@@ -3,8 +3,9 @@
 namespace wms\app\controllers;
 
 use MainPage;
+use wms\app\core\Controller;
 
-class Pegawai extends \wms\app\core\Controller implements MainPage
+class Pegawai extends Controller implements MainPage
 {
     public function index()
     {

@@ -2,13 +2,15 @@
 
 namespace wms\app\models;
 
+use wms\app\core\Database;
+
 class Jabatan
 {
     private $database;
 
     public function __construct()
     {
-        $this->database = new \wms\app\core\Database;
+        $this->database = new Database;
     }
 
     // Query semua data pegawai

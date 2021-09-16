@@ -3,8 +3,9 @@
 namespace wms\app\controllers;
 
 use MainPage;
+use wms\app\core\Controller;
 
-class Absensi extends \wms\app\core\Controller implements MainPage
+class Absensi extends Controller implements MainPage
 {
 
     public function index()
