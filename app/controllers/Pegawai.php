@@ -68,7 +68,7 @@ class Pegawai extends Controller implements MainPage
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         } else {
-            Flasher::setFlash('gagal', ' ditambahkan', 'success');
+            Flasher::setFlash('gagal', ' ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         }
