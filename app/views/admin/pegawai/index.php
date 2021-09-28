@@ -127,6 +127,15 @@
             </div>
             <!-- Akhir Modal Content -->
 
+            <!-- Flash Message -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <?php wms\app\core\Flasher::flash(); ?>
+                </div>
+            </div>
+            <!-- END Flash Message -->
+
+
             <div class="row">
 
                 <!-- Card Content Data Pegawai -->

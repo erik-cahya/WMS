@@ -4,6 +4,7 @@ namespace wms\app\controllers;
 
 use MainPage;
 use wms\app\core\Controller;
+use wms\app\core\Flasher;
 
 class Pegawai extends Controller implements MainPage
 {
@@ -13,7 +14,8 @@ class Pegawai extends Controller implements MainPage
         $data['link'] = [
             'dashboard' => '',
             'pegawai' => 'active',
-            'kehadiran' => ''
+            'kehadiran' => '',
+            'profiles' => ''
         ];
 
         $data['query'] = $this->model('Pegawai')->getAllPegawai();
@@ -30,7 +32,8 @@ class Pegawai extends Controller implements MainPage
         $data['link'] = [
             'dashboard' => '',
             'pegawai' => 'active',
-            'kehadiran' => ''
+            'kehadiran' => '',
+            'profiles' => ''
         ];
 
         $data['query'] = $this->model('Pegawai')->getPegawaiByNik($nik);
@@ -46,7 +49,8 @@ class Pegawai extends Controller implements MainPage
         $data['link'] = [
             'dashboard' => '',
             'pegawai' => 'active',
-            'kehadiran' => ''
+            'kehadiran' => '',
+            'profiles' => ''
         ];
 
         $data['query'] = $this->model('Pegawai')->searchDataPegawai();
@@ -60,9 +64,13 @@ class Pegawai extends Controller implements MainPage
     public function addPegawai()
     {
         if ($this->model('Pegawai')->addPegawai($_POST) > 0) {
+            Flasher::setFlash('berhasil', ' ditambahkan', 'success');
             header('Location: ' . BASEURL . '/pegawai');
+            exit;
         } else {
+            Flasher::setFlash('gagal', ' ditambahkan', 'success');
             header('Location: ' . BASEURL . '/pegawai');
+            exit;
         }
     }
 

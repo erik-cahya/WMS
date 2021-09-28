@@ -5,21 +5,21 @@ namespace wms\app\controllers;
 use MainPage;
 use wms\app\core\Controller;
 
-class Absensi extends Controller implements MainPage
+class Profiles extends Controller implements MainPage
 {
-
     public function index()
     {
-        $data['judul'] = "Manage Kehadiran Pegawai";
+        $data['judul'] = "Profiles";
         $data['link'] = [
             'dashboard' => '',
             'pegawai' => '',
-            'kehadiran' => 'active',
-            'profiles' => ''
+            'kehadiran' => '',
+            'profiles' => 'active'
         ];
 
+
         $this->view('templates/header', $data);
-        $this->view('admin/absensi/index');
+        $this->view('admin/profiles/index', $data);
         $this->view('templates/footer');
     }
 }

@@ -78,9 +78,9 @@
 
                         <strong><i class="far fa-file-alt mr-1"></i> Social Media</strong>
                         <p class="ml-4">
-                            <a href="<?= $data['query']['fb_links']; ?>" class="text-muted " style="font-size:30px;"><i class="fab fa-facebook fs-1"></i></a>
-                            <a href="<?= $data['query']['ig_links']; ?>" class="text-muted pl-1" style="font-size:30px;"><i class="fab fa-instagram-square"></i></a>
-                            <a href="<?= $data['query']['linked_links']; ?>" class="text-muted pl-1" style="font-size:30px;"><i class="fab fa-linkedin"></i></a>
+                            <a href="<?= $data['query']['fb_links']; ?>" class="text-muted " style="font-size:30px;" target="blank"><i class="fab fa-facebook fs-1"></i></a>
+                            <a href="<?= $data['query']['ig_links']; ?>" class="text-muted pl-1" style="font-size:30px;" target="blank"><i class="fab fa-instagram-square"></i></a>
+                            <a href="<?= $data['query']['linked_links']; ?>" class="text-muted pl-1" style="font-size:30px;" target="blank"><i class="fab fa-linkedin"></i></a>
                         </p>
                     </div>
                     <!-- /.card-body -->
@@ -297,9 +297,10 @@
                                     <div class="form-group row">
                                         <label for="inputName" class="col-sm-2 col-form-label">Alamat</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" id="inputName" value="<?= $data['query']['alamat']; ?>" name="alamat">
+                                            <textarea class="form-control" name="alamat" rows="3"><?= $data['query']['alamat']; ?></textarea>
                                         </div>
                                     </div>
+
                                     <!-- End Alamat -->
 
                                     <!-- Link Facebook -->

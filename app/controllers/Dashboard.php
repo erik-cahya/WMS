@@ -13,7 +13,8 @@ class Dashboard extends Controller implements MainPage
         $data['link'] = [
             'dashboard' => 'active',
             'pegawai' => '',
-            'kehadiran' => ''
+            'kehadiran' => '',
+            'profiles' => ''
         ];
         $data['countPegawai'] = $this->model('Pegawai')->countPegawai();
         $data['pegawai'] = $this->model('Pegawai')->getAllPegawai();

@@ -1,3 +1,4 @@
+# Jika ada file index, maka perbolehkan akses
 Options -Indexes
 
 RewriteEngine On
