@@ -77,9 +77,13 @@ class Pegawai extends Controller implements MainPage
     public function deletePegawai($nik)
     {
         if ($this->model('Pegawai')->deletePegawai($nik) > 0) {
+            Flasher::setFlash('berhasil', ' dihapus', 'success');
             header('Location: ' . BASEURL . '/pegawai');
+            exit;
         } else {
+            Flasher::setFlash('gagal', ' dihapus', 'danger');
             header('Location: ' . BASEURL . '/pegawai');
+            exit;
         }
     }
 

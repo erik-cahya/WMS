@@ -110,7 +110,6 @@ class Pegawai
         $gambar         = $data["gambar"];
         $level          = $data["level"];
 
-
         $query = "UPDATE pegawai SET 
         nik = '$nik',
         id_jabatan = '$id_jabatan',

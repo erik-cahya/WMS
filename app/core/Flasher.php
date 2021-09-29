@@ -18,13 +18,13 @@ class Flasher
     {
         if (isset($_SESSION['flash'])) {
             echo '
-                <div class="alert alert-' . $_SESSION['flash']['type'] . ' alert-dismissible fade show" role="alert">Data Pegawai
-                <strong>' . $_SESSION['flash']['message'] . '</strong>' . $_SESSION['flash']['action'] . '
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                </div>
+                <div class="alert alert-' . $_SESSION['flash']['type'] . ' alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h5><i class="icon fas fa-check"></i> Sukses!</h5>
+                Data Pegawai ' . $_SESSION['flash']['message'] . ' ' . $_SESSION['flash']['action'] . '
+                </div> 
                 ';
+
 
             unset($_SESSION['flash']);
         }

@@ -129,7 +129,7 @@
 
             <!-- Flash Message -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <?php wms\app\core\Flasher::flash(); ?>
                 </div>
             </div>
