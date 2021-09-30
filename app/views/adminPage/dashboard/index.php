@@ -117,7 +117,9 @@
                                     <td><?= $dataPegawai['email']; ?></td>
                                     <td><?= $dataPegawai['alamat']; ?></td>
                                     <td>
-                                        <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        <a href="<?= BASEURL; ?>/pegawai/detail/<?= $dataPegawai['nik'] ?>">
+                                            <button class="btn btn-primary"><i class="fas fa-edit"></i></button>
+                                        </a>
                                     </td>
                                 </tbody>
                                 <?php $no++; ?>

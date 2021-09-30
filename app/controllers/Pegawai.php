@@ -22,7 +22,7 @@ class Pegawai extends Controller implements MainPage
         $data['jabatan'] = $this->model('Jabatan')->getAllJabatan();
 
         $this->view('templates/header', $data);
-        $this->view('admin/pegawai/index', $data);
+        $this->view('adminPage/pegawai/index', $data);
         $this->view('templates/footer');
     }
 
@@ -39,7 +39,7 @@ class Pegawai extends Controller implements MainPage
         $data['query'] = $this->model('Pegawai')->getPegawaiByNik($nik);
         $data['jabatan'] = $this->model('Jabatan')->getAllJabatan();
         $this->view('templates/header', $data);
-        $this->view('admin/pegawai/detail', $data);
+        $this->view('adminPage/pegawai/detail', $data);
         $this->view('templates/footer');
     }
 
@@ -57,7 +57,7 @@ class Pegawai extends Controller implements MainPage
         $data['jabatan'] = $this->model('Jabatan')->getAllJabatan();
 
         $this->view('templates/header', $data);
-        $this->view('admin/pegawai/index', $data);
+        $this->view('adminPage/pegawai/index', $data);
         $this->view('templates/footer');
     }
 

@@ -19,7 +19,7 @@ class Profiles extends Controller implements MainPage
 
 
         $this->view('templates/header', $data);
-        $this->view('admin/profiles/index', $data);
+        $this->view('adminPage/profiles/index', $data);
         $this->view('templates/footer');
     }
 }
