@@ -136,4 +136,12 @@ class Pegawai
 
         return $this->database->rowCount();
     }
+
+    // Login Query
+    public function loginUser($username, $password)
+    {
+        $this->database->query("SELECT * FROM pegawai JOIN jabatan ON pegawai.id_jabatan=jabatan.id_jabatan WHERE username = '$username'");
+        $this->database->execute();
+        return $this->database->single();
+    }
 }
