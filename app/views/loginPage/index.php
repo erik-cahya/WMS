@@ -36,7 +36,7 @@
 
 
                 <!-- Form Login -->
-                <form action="" method="POST">
+                <form action="<?= BASEURL; ?>/login/loginUser" method="POST">
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="Username" name="username">
                         <div class="input-group-append">

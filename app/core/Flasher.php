@@ -24,7 +24,6 @@ class Flasher
                 Data Pegawai ' . $_SESSION['flash']['message'] . ' ' . $_SESSION['flash']['action'] . '
                 </div> 
                 ';
-
             unset($_SESSION['flash']);
         }
     }

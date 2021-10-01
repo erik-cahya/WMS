@@ -1,6 +1,5 @@
 <?php
 
-session_start();
 
 namespace wms\app\controllers;
 
@@ -9,10 +8,7 @@ use wms\app\core\Controller;
 
 class Dashboard extends Controller implements MainPage
 {
-    // set session
-    if(isset($_SESSION["login"])){
-        
-    }
+
 
 
     public function index()
