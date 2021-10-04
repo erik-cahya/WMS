@@ -4,6 +4,10 @@ namespace wms\app\core;
 
 class Flasher
 {
+    public function __construct()
+    {
+        session_start();
+    }
 
     public static function setFlash($message, $action, $type)
     {

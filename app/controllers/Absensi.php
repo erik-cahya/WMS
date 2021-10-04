@@ -7,6 +7,10 @@ use wms\app\core\Controller;
 
 class Absensi extends Controller implements MainPage
 {
+    public function __construct()
+    {
+        session_start();
+    }
 
     public function index()
     {
@@ -17,6 +21,7 @@ class Absensi extends Controller implements MainPage
             'kehadiran' => 'active',
             'profiles' => ''
         ];
+        $data['session_nama'] = $_SESSION["nama_pegawai"];
 
         $this->view('templates/header', $data);
         $this->view('adminPage/absensi/index');

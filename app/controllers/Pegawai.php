@@ -8,8 +8,15 @@ use wms\app\core\Flasher;
 
 class Pegawai extends Controller implements MainPage
 {
+
+    public function __construct()
+    {
+        session_start();
+    }
+
     public function index()
     {
+
         $data['judul'] = "Halaman Pegawai";
         $data['link'] = [
             'dashboard' => '',
@@ -17,6 +24,7 @@ class Pegawai extends Controller implements MainPage
             'kehadiran' => '',
             'profiles' => ''
         ];
+        $data['session_nama'] = $_SESSION["nama_pegawai"];
 
         $data['query'] = $this->model('Pegawai')->getAllPegawai();
         $data['jabatan'] = $this->model('Jabatan')->getAllJabatan();

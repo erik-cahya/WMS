@@ -6,10 +6,14 @@ namespace wms\app\controllers;
 use MainPage;
 use wms\app\core\Controller;
 
+// inheritance ke controller
 class Dashboard extends Controller implements MainPage
 {
 
-
+    public function __construct()
+    {
+        session_start();
+    }
 
     public function index()
     {

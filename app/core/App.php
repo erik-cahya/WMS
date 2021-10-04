@@ -4,7 +4,7 @@ namespace wms\app\core;
 
 class App
 {
-    protected $controller = 'Dashboard';
+    protected $controller = 'Login';
     protected $method = 'index';
     protected $parameter = [];
 
@@ -13,21 +13,14 @@ class App
         $url = $this->parseURL();
 
         // CONTROLLER
-
-        // untuk menghilangkan error null
-        // if ($url === NULL) {
-        //     $url = [$this->controller];
-        // }
-        // atau bisa juga diberi tanda @ di depan file_exist agar jika suatu nilai null, akan diabaikan
-
         if (@file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
 
         require_once '../app/controllers/' . $this->controller . '.php';
-        $core2 = '\\wms\\app\\controllers\\' . $this->controller;
-        $this->controller = new $core2;
+        $controller = '\\wms\\app\\controllers\\' . $this->controller;
+        $this->controller = new $controller;
 
         // METHOD  
         if (isset($url[1])) {

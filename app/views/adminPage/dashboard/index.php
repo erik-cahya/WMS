@@ -43,12 +43,12 @@
             </div>
             <!-- End Total Applicants -->
 
-            <!-- Applicants Accepted -->
+            <!-- Kehadiran -->
             <div class="col-lg-4 col-6">
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>
-                            20
+                            3 Pegawai
                         </h3>
                         <p>Kehadiran</p>
                     </div>
@@ -58,14 +58,14 @@
                     <div class="box-footer pb-4"></div>
                 </div>
             </div>
-            <!-- End Applicants Accepted -->
+            <!-- End Kehadiran -->
 
-            <!-- Applicants Pending -->
+            <!-- Pengajuan Cuti -->
             <div class="col-lg-4 col-sm-12">
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>
-                            30
+                            0
                             Pegawai
                         </h3>
                         <p>Pengajuan Cuti</p>
@@ -76,7 +76,7 @@
                     <div class="box-footer pb-4"></div>
                 </div>
             </div>
-            <!-- End Applicants Pending-->
+            <!-- End Pengajuan Cuti-->
 
         </div>
 

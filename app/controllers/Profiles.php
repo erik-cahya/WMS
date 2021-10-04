@@ -7,6 +7,11 @@ use wms\app\core\Controller;
 
 class Profiles extends Controller implements MainPage
 {
+    public function __construct()
+    {
+        session_start();
+    }
+
     public function index()
     {
         $data['judul'] = "Profiles";
@@ -16,6 +21,7 @@ class Profiles extends Controller implements MainPage
             'kehadiran' => '',
             'profiles' => 'active'
         ];
+        $data['session_nama'] = $_SESSION["nama_pegawai"];
 
 
         $this->view('templates/header', $data);
