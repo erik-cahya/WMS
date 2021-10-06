@@ -111,31 +111,30 @@
                                             </thead>
 
                                             <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>190030209</td>
-                                                    <td>Erik Cahya Pradana</td>
-                                                    <td>Network Engineer</td>
-                                                    <td>04-05-2001</td>
-                                                    <td>04-05-2001</td>
-                                                    <td>Pulang Kampung Acara Adat</td>
+                                                <?php foreach ($data["cuti"] as $cuti) : ?>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td><?= $cuti["nik"]; ?></td>
+                                                        <td><?= $cuti["nama_pegawai"]; ?></td>
+                                                        <td><?= $cuti["nama_jabatan"]; ?></td>
+                                                        <td><?= $cuti["mulai_cuti"]; ?></td>
+                                                        <td><?= $cuti["selesai_cuti"]; ?></td>
+                                                        <td><?= $cuti["keterangan"]; ?></td>
 
-                                                    <?php
-                                                    $dCuti = 1;
-                                                    if ($dCuti == 1) {
-                                                        $keterangan = "Accepted";
-                                                        $badge = "badge-success";
-                                                    } else if ($dCuti == 2) {
-                                                        $keterangan = "Pending";
-                                                        $badge = "badge-warning";
-                                                    } else if ($dCuti == 3) {
-                                                        $keterangan = "Rejected";
-                                                        $badge = "badge-danger";
-                                                    }
-                                                    ?>
+                                                        <?php
 
-                                                    <td><span class="badge <?= $badge; ?>"><?= $keterangan; ?></span></td>
-                                                </tr>
+                                                        if ($cuti["status"] == "Pending") {
+                                                            $badge = "badge-warning";
+                                                        } else if ($cuti["status"] === "Accepted") {
+                                                            $badge = "badge-success";
+                                                        } else if ($cuti["status"] == "Reject") {
+                                                            $badge = "badge-danger";
+                                                        }
+                                                        ?>
+
+                                                        <td><span class="badge <?= $badge; ?>"><?= $cuti["status"]; ?></span></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
 
 
                                             </tbody>

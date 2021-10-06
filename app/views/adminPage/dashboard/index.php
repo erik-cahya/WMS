@@ -48,7 +48,10 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <h3>
-                            3 Pegawai
+                            <?php foreach ($data["countAbsensi"] as $count) : ?>
+                                <?= $count ?>
+                            <?php endforeach; ?>
+                            Pegawai
                         </h3>
                         <p>Kehadiran</p>
                     </div>
@@ -65,7 +68,9 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <h3>
-                            0
+                            <?php foreach ($data["countCuti"] as $count) : ?>
+                                <?= $count ?>
+                            <?php endforeach; ?>
                             Pegawai
                         </h3>
                         <p>Pengajuan Cuti</p>
@@ -179,21 +184,20 @@
                                                     <th width="200px">Tanggal Hadir</th>
                                                     <th width="250px">Jam</th>
                                                     <th width="350px">Jabatan</th>
-                                                    <th width="150px">Status</th>
                                                 </tr>
                                             </thead>
 
-                                            <tbody>
-                                                <td>1</td>
-                                                <td>190030209</td>
-                                                <td>Erik Cahya Pradana</td>
-                                                <td>10-25-2001</td>
-                                                <td>00.00</td>
-                                                <td>Senior Developer</td>
-                                                <td>
-                                                    <button class="btn btn-success">View</button>
-                                                </td>
-                                            </tbody>
+                                            <?php foreach ($data["absensi"] as $absensi) : ?>
+                                                <tbody>
+                                                    <td>1</td>
+                                                    <td><?= $absensi["nik"]; ?></td>
+                                                    <td><?= $absensi["nama_pegawai"]; ?></td>
+                                                    <td><?= $absensi["tanggal"]; ?></td>
+                                                    <td><?= $absensi["waktu"]; ?></td>
+                                                    <td><?= $absensi["nama_jabatan"]; ?></td>
+
+                                                </tbody>
+                                            <?php endforeach; ?>
 
                                         </table>
                                     </div>
@@ -220,18 +224,20 @@
                                                 </tr>
                                             </thead>
 
-                                            <tbody>
-                                                <td>1</td>
-                                                <td>190030209</td>
-                                                <td>Erik Cahya Pradana</td>
-                                                <td>10-25-2001</td>
-                                                <td>00.00</td>
-                                                <td>Senior Developer</td>
-                                                <td>Senior Developer</td>
-                                                <td>
-                                                    <button class="btn btn-success">View</button>
-                                                </td>
-                                            </tbody>
+                                            <?php foreach ($data["cuti"] as $cuti) : ?>
+                                                <tbody>
+                                                    <td>1</td>
+                                                    <td><?= $cuti["nik"]; ?></td>
+                                                    <td><?= $cuti["nama_pegawai"]; ?></td>
+                                                    <td><?= $cuti["mulai_cuti"]; ?></td>
+                                                    <td><?= $cuti["selesai_cuti"]; ?></td>
+                                                    <td><?= $cuti["keterangan"]; ?></td>
+                                                    <td><?= $cuti["status"]; ?></td>
+                                                    <td>
+                                                        <button class="btn btn-success">View</button>
+                                                    </td>
+                                                </tbody>
+                                            <?php endforeach; ?>
                                         </table>
                                     </div>
                                     <!-- /.card-body -->

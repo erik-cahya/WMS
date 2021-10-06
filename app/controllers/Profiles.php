@@ -7,10 +7,6 @@ use wms\app\core\Controller;
 
 class Profiles extends Controller implements MainPage
 {
-    public function __construct()
-    {
-        session_start();
-    }
 
     public function index()
     {

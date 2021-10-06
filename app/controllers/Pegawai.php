@@ -9,10 +9,6 @@ use wms\app\core\Flasher;
 class Pegawai extends Controller implements MainPage
 {
 
-    public function __construct()
-    {
-        session_start();
-    }
 
     public function index()
     {
@@ -46,6 +42,7 @@ class Pegawai extends Controller implements MainPage
 
         $data['query'] = $this->model('Pegawai')->getPegawaiByNik($nik);
         $data['jabatan'] = $this->model('Jabatan')->getAllJabatan();
+        $data['dataAccount'] = $this->model('Account')->getDataAccountByNik($nik);
         $this->view('templates/header', $data);
         $this->view('adminPage/pegawai/detail', $data);
         $this->view('templates/footer');
@@ -72,11 +69,11 @@ class Pegawai extends Controller implements MainPage
     public function addPegawai()
     {
         if ($this->model('Pegawai')->addPegawai($_POST) > 0) {
-            Flasher::setFlash('berhasil', ' ditambahkan', 'success');
+            Flasher::setFlash('Pegawai berhasil', ' ditambahkan', 'success');
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         } else {
-            Flasher::setFlash('gagal', ' ditambahkan', 'danger');
+            Flasher::setFlash('Pegawai gagal', ' ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         }
@@ -85,11 +82,11 @@ class Pegawai extends Controller implements MainPage
     public function deletePegawai($nik)
     {
         if ($this->model('Pegawai')->deletePegawai($nik) > 0) {
-            Flasher::setFlash('berhasil', ' dihapus', 'success');
+            Flasher::setFlash('Pegawai berhasil', ' dihapus', 'success');
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         } else {
-            Flasher::setFlash('gagal', ' dihapus', 'danger');
+            Flasher::setFlash('Pegawai gagal', ' dihapus', 'danger');
             header('Location: ' . BASEURL . '/pegawai');
             exit;
         }
@@ -99,6 +96,30 @@ class Pegawai extends Controller implements MainPage
     {
         if ($this->model('Pegawai')->editPegawai($_POST) > 0) {
             header('Location: ' . BASEURL . '/pegawai');
+        }
+    }
+
+    public function editUserAccount()
+    {
+        if ($this->model('Account')->editDataAccount($_POST) > 0) {
+            Flasher::setFlash('Password berhasil', ' diubah', 'success');
+            header('Location: ' . BASEURL . '/pegawai');
+        } else {
+            Flasher::setFlash('Password gagal', ' diubah', 'danger');
+            header('Location: ' . BASEURL . '/pegawai');
+        }
+    }
+
+    public function addUserAccount()
+    {
+        if ($this->model('Account')->addDataAccount($_POST) > 0) {
+            Flasher::setFlash('Account berhasil', ' ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/pegawai');
+            exit;
+        } else {
+            Flasher::setFlash('Account gagal', ' ditambahkan', 'danger');
+            header('Location: ' . BASEURL . '/pegawai');
+            exit;
         }
     }
 }

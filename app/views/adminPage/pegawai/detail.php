@@ -94,8 +94,12 @@
                         <ul class="nav nav-pills">
                             <li class="nav-item"><a class="nav-link active" href="#biodata" data-toggle="tab">Biodata</a></li>
                             <li class="nav-item"><a class="nav-link" href="#change" data-toggle="tab">Ubah Biodata</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#account" data-toggle="tab">Account Settings</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#addAccount" data-toggle="tab">Add Account</a></li>
+                            <?php if ($data["dataAccount"] >= 1) : ?>
+                                <li class="nav-item"><a class="nav-link" href="#account" data-toggle="tab">Account Settings</a></li>
+                            <?php endif; ?>
+                            <?php if ($data["dataAccount"] == NULL) : ?>
+                                <li class="nav-item"><a class="nav-link" href="#addAccount" data-toggle="tab">Add Account</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div><!-- /.card-header -->
 
@@ -330,17 +334,6 @@
                                     </div>
                                     <!-- End Link Linkedln -->
 
-                                    <!-- Upload File -->
-                                    <div class="form-group row">
-                                        <div class="col-lg-2 col-sm-12">
-                                            <label for="image">Change Picture</label>
-                                        </div>
-                                        <div class="col-lg-5 col-sm-12">
-                                            <input type="file" name="gambar" id="image">
-                                        </div>
-                                    </div>
-
-
 
                                     <div class="form-group row">
                                         <div class="offset-sm-2 col-sm-10">
@@ -358,34 +351,39 @@
                             <!-- Account Setting -->
                             <div class="tab-pane" id="account">
 
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" method="POST" action="<?= BASEURL; ?>/pegawai/editUserAccount/<?= $data['dataAccount']['nik'] ?>">
 
                                     <!-- Pengecekan Account -->
-                                    <?php if ($dataAccount == null) {
+                                    <?php if ($data['dataAccount'] == null) {
                                         $username = "Blm ada Data";
                                         $disable = "disabled";
 
                                         $danger = "
-                          <div class='alert alert-danger' role='alert'>
-                            Account user ini belum di tambahkan pada database (NULL)
-                          </div>";
+                                                <div class='alert alert-danger' role='alert'>
+                                                    Account user ini belum di tambahkan pada database (NULL)
+                                                </div>";
                                     } else {
-                                        $username = $dataAccount["username"];
-                                        $password = $dataAccount["password"];
+                                        $username = $data['dataAccount']["username"];
+                                        $password = $data['dataAccount']["password"];
+
+                                        $danger = "";
+                                        $disable = "";
                                     }
                                     ?>
 
                                     <?= $danger; ?>
-                                    <input type="text" name="id_user" value="<?= $dataAccount["id_user"]; ?>" hidden>
-                                    <input type="hidden" name="nik" value="<?= $dataAccount["nik"]; ?>">
+                                    <input type="text" name="id_user" value="<?= $data['dataAccount']["id_user"]; ?>" hidden>
+                                    <input type="hidden" name="nik" value="<?= $data['dataAccount']["nik"]; ?>">
+
 
                                     <div class="form-group row">
                                         <label for="username" class="col-sm-2 col-form-label">Username</label>
                                         <div class="col-sm-10">
                                             <input type="text" id="username" name="username" value="<?= $username ?>" hidden>
-                                            <input type="text" class="form-control" value="<?= $username; ?>" disabled>
+                                            <input type="text" class="form-control" value="<?= $username ?>" disabled>
                                         </div>
                                     </div>
+
 
                                     <div class="form-group row">
                                         <label for="inputEmail" class="col-sm-2 col-form-label">Password</label>
@@ -410,11 +408,11 @@
                             <!-- Add Account -->
                             <div class="tab-pane" id="addAccount">
 
-                                <form class="form-horizontal" method="POST">
+                                <form class="form-horizontal" method="POST" action="<?= BASEURL; ?>/pegawai/addUserAccount/">
 
 
                                     <input type="text" name="id_user" hidden>
-                                    <input type="hidden" name="nik" value="<?= $dataUser["nik"]; ?>">
+                                    <input type="hidden" name="nik" value="<?= $data["query"]["nik"]; ?>">
                                     <div class="form-group row">
                                         <label for="inputEmail" class="col-sm-2 col-form-label">Username</label>
                                         <div class="col-sm-10">
@@ -445,6 +443,7 @@
                                 </form>
                             </div>
                             <!-- End Add Account -->
+
 
                         </div>
                     </div>

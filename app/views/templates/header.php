@@ -66,7 +66,7 @@
                             <img src="<?= BASEURL; ?>/dist/img/avatar.png" class="img-circle elevation-2" width="50px" alt="User Image">
                         </div>
 
-                        <span class="dropdown-header text-bold text-md">Erik Cahya Pradana</span>
+                        <span class="dropdown-header text-bold text-md"><?= $_SESSION["nama_pegawai"] ?></span>
 
                         <div class="dropdown-divider md-2"></div>
                         <a href="<?= BASEURL ?>/logout" class="dropdown-item dropdown-footer">Logout</a>
@@ -94,57 +94,78 @@
                         <img src="<?= BASEURL; ?>/dist/img/avatar5.png" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block"><?= $data["session_nama"]; ?></a>
+                        <a href="#" class="d-block"><?= $_SESSION["nama_pegawai"]; ?></a>
                     </div>
                 </div>
 
 
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <li class="nav-header">EXAMPLES</li>
-                        <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
-                        <li class="nav-item">
-                            <a href="<?= BASEURL ?>/login/loginAdmin" class="nav-link <?= $data['link']['dashboard']; ?>">
-                                <i class=" nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
+                    <?php if ($_SESSION['level'] == 'admin') { ?>
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-header">EXAMPLES</li>
 
-                        <li class="nav-item">
-                            <a href="<?= BASEURL; ?>/pegawai" class="nav-link <?= $data['link']['pegawai']; ?>">
-                                <i class="nav-icon fas fa-user-friends"></i>
-                                <p>
-                                    Pegawai
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="<?= BASEURL ?>/dashboard_admin" class="nav-link <?= $data['link']['dashboard']; ?>">
+                                    <i class=" nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a href="<?= BASEURL; ?>/absensi" class="nav-link <?= $data['link']['kehadiran']; ?>">
-                                <i class="nav-icon fas fa-user-clock"></i>
-                                <p>
-                                    Manage Kehadiran
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="<?= BASEURL; ?>/pegawai" class="nav-link <?= $data['link']['pegawai']; ?>">
+                                    <i class="nav-icon fas fa-user-friends"></i>
+                                    <p>
+                                        Pegawai
+                                    </p>
+                                </a>
+                            </li>
 
-                        <li class="nav-header">PERSONAL</li>
-                        <li class="nav-item">
-                            <a href="<?= BASEURL; ?>/profiles" class="nav-link <?= $data['link']['profiles']; ?>">
-                                <i class="nav-icon fas fa-user-circle"></i>
-                                <p>
-                                    Profiles
-                                </p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="<?= BASEURL; ?>/absensi" class="nav-link <?= $data['link']['kehadiran']; ?>">
+                                    <i class="nav-icon fas fa-user-clock"></i>
+                                    <p>
+                                        Manage Kehadiran
+                                    </p>
+                                </a>
+                            </li>
 
+                            <li class="nav-header">PERSONAL</li>
+                            <li class="nav-item">
+                                <a href="<?= BASEURL; ?>/pegawai/detail/<?= $_SESSION["nik"] ?>" class="nav-link <?= $data['link']['profiles']; ?>">
+                                    <i class="nav-icon fas fa-user-circle"></i>
+                                    <p>
+                                        Profiles
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    <?php } else if ($_SESSION['level'] == 'pegawai') { ?>
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <li class="nav-header">EXAMPLES</li>
 
-                    </ul>
+                            <li class="nav-item">
+                                <a href="<?= BASEURL ?>/absensi/addAbsensiPegawai" class="nav-link <?= $data['link']['dashboard']; ?>">
+                                    <i class=" nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Absensi
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="<?= BASEURL; ?>/cuti/cutiPegawai/<?= $_SESSION['nik'] ?>" class="nav-link <?= $data['link']['pegawai']; ?>">
+                                    <i class="nav-icon fas fa-user-friends"></i>
+                                    <p>
+                                        Pengajuan Cuti
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    <?php } ?>
                 </nav>
                 <!-- /.sidebar-menu -->
             </div>

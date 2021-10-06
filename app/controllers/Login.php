@@ -4,14 +4,9 @@ namespace wms\app\controllers;
 
 use MainPage;
 use wms\app\core\Controller;
-use wms\app\core\setSession;
 
 class Login extends Controller implements MainPage
 {
-    public function __construct()
-    {
-        session_start();
-    }
 
     public function index()
     {
@@ -44,53 +39,36 @@ class Login extends Controller implements MainPage
 
                 if ($password == $row["password"]) {
 
-                    // level 2 : HR Manager
-                    if ($row["level"] == 2) {
+                    // level 2 : Admin
+                    if ($row["level"] == "admin") {
 
                         $_SESSION["login"] = true;
                         $_SESSION["username"] = $row["username"];
                         $_SESSION["nama_pegawai"] = $row["nama_pegawai"];
                         $_SESSION["gambar"] = $row["gambar"];
                         $_SESSION["nik"] = $row["nik"];
+                        $_SESSION["level"] = $row["level"];
 
-                        header("Location:" . BASEURL . "/login/loginAdmin");
+                        header("Location:" . BASEURL . "/dashboard_admin");
 
                         exit;
 
                         // level 1 : pegawai
-                    } else if ($row["level"] == 1) {
+                    } else if ($row["level"] == "pegawai") {
 
-                        $redirect = $row["nik"];
-                        header("Location: profilePegawai.php?nik=$redirect");
-
-                        $_SESSION["nik"] = $row["nik"];
                         $_SESSION["login"] = true;
                         $_SESSION["username"] = $row["username"];
                         $_SESSION["nama_pegawai"] = $row["nama_pegawai"];
                         $_SESSION["gambar"] = $row["gambar"];
+                        $_SESSION["nik"] = $row["nik"];
+                        $_SESSION["level"] = $row["level"];
+
+                        header("Location:" . BASEURL . "/dashboard_pegawai");
 
                         exit;
                     }
                 }
             }
         }
-    }
-
-    public function loginAdmin()
-    {
-        $data['judul'] = "Halaman Dashboard";
-        $data['link'] = [
-            'dashboard' => 'active',
-            'pegawai' => '',
-            'kehadiran' => '',
-            'profiles' => ''
-        ];
-        $data['countPegawai'] = $this->model('Pegawai')->countPegawai();
-        $data['pegawai'] = $this->model('Pegawai')->getAllPegawai();
-        $data['session_nama'] = $_SESSION["nama_pegawai"];
-
-        $this->view('templates/header', $data);
-        $this->view('adminPage/dashboard/index', $data);
-        $this->view('templates/footer');
     }
 }

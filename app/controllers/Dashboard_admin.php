@@ -7,14 +7,8 @@ use MainPage;
 use wms\app\core\Controller;
 
 // inheritance ke controller
-class Dashboard extends Controller implements MainPage
+class Dashboard_admin extends Controller implements MainPage
 {
-
-    public function __construct()
-    {
-        session_start();
-    }
-
     public function index()
     {
         $data['judul'] = "Halaman Dashboard";
@@ -25,7 +19,11 @@ class Dashboard extends Controller implements MainPage
             'profiles' => ''
         ];
         $data['countPegawai'] = $this->model('Pegawai')->countPegawai();
+        $data['countCuti'] = $this->model('Cuti')->countDataCuti();
+        $data['countAbsensi'] = $this->model('Absensi')->countDataAbsensi();
         $data['pegawai'] = $this->model('Pegawai')->getAllPegawai();
+        $data['cuti'] = $this->model('Cuti')->getDataCuti();
+        $data['absensi'] = $this->model('Absensi')->getDataAbsensi();
 
         $this->view('templates/header', $data);
         $this->view('adminPage/dashboard/index', $data);

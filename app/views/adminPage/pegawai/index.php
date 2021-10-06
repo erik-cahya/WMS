@@ -65,7 +65,7 @@
                                     <form action="<?= BASEURL; ?>/pegawai/addPegawai" method="POST" enctype="multipart/form-data">
 
                                         <!-- Level -->
-                                        <input type="hidden" name="level" value="1">
+                                        <input type="hidden" name="level" value="pegawai">
 
                                         <!-- NIK -->
                                         <div class="form-group row">
