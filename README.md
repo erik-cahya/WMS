@@ -1,6 +1,4 @@
-# WMS
-Working Management System
-
+# WMS (Working Management System)
 
 Note: 
 
