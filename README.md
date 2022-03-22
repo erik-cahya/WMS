@@ -3,4 +3,6 @@ Working Management System
 
 
 Note: 
--- Sesuakan BASEURL pada app\config\config.php
+
+1. Sesuaikan BASEURL pada app\config\config.php
+2. Sesuaikan config database pada app\config\config.php
